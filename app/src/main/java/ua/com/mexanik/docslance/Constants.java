@@ -17,11 +17,27 @@ public class Constants {
 
     public static final String CHECK_IF_IS_AUTH_PASSED = "IsLoggedIn";
 
+
+    public static final String URL_TO_PARSE = "http://192.168.12.1/?doc=";
+
+    public static final String EXTRA_LOGIN_CODE = "code";
+
     public static final String EXTRAS_TITLE = "title";
     public static final String EXTRAS_HASH_MAP = "map";
 
     public static final String PREFS_TRACK_GEO = "track_geolocation";
 
+    public static final String DOC_NAME = "name";
+    public static final String DOC_SURN = "surname";
+    public static final String DOC_AGE = "age";
+    public static final String DOC_EDU = "education";
+    public static final String DOC_SPEC = "specialization";
+    public static final String DOC_SKILLS = "skills";
+    public static final String DOC_RATING = "rating";
+    public static final String DOC_PRICE = "Price";
+    public static final String DOC_PHOTO = "fotoUrl";
+    public static final String DOC_EXP = "experience";
+    public static final String DOC_GAS = "gas";
 
 
 }

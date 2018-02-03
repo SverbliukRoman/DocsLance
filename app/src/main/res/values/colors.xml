@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#47be3d</color>
-    <color name="colorPrimaryDark">#6fc963</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#009688</color>
     <color name="colorWhite">#fff</color>
     <color name="colorGray">#898989</color>
 
@@ -12,4 +12,12 @@
 
     <color name="colorBlueSpecific">#ACD0CB</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="backgroundColor">#4550B9</color>
+
+    <color name="starColor">#57a6f0</color>
+    <color name="noteDescriptionTextColor">#57a6f0</color>
+    <color name="titleTextColor">#D9141627</color>
+    <color name="descriptionTextColor">#80141627</color>
+    <color name="commentTextColor">#D9141627</color>
 </resources>

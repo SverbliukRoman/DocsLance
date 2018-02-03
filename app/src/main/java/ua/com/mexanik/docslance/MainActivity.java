@@ -3,8 +3,11 @@ package ua.com.mexanik.docslance;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,24 +17,34 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
+import com.stepstone.apprating.AppRatingDialog;
+import com.stepstone.apprating.listener.RatingDialogListener;
+
+import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.FragmentRecyclerViewDoctor;
 
 import static ua.com.mexanik.docslance.Constants.CHECK_IF_IS_AUTH_PASSED;
 import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_FIRST_NAME;
 import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_IMAGE_URL;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, RatingDialogListener {
     SharedPreferences.Editor editor;
     SharedPreferences prefs;
     CircleImageView profileImageView;
     TextView profileTextName;
+    ImageView headerImageView;
+    FragmentRecyclerViewDoctor fragmentRecyclerViewDoctor;
 
 
     @Override
@@ -72,6 +85,18 @@ public class MainActivity extends AppCompatActivity
                 .load(profileImageUrl)
                 .into(profileImageView);
         profileTextName.setText(getString(R.string.greetings) + ", " + profileName + " " + "!");
+
+        headerImageView = headerLayout.findViewById(R.id.header_image_view);
+
+        // add 3d dna image
+        Glide.with(this)
+                .load(R.raw.source)
+                .into(headerImageView);
+
+        // recyclerview
+
+
+        showDialog();
     }
 
     @Override
@@ -112,17 +137,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_profile) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_docs) {
+            if (fragmentRecyclerViewDoctor == null)
+            replaceWithFragment(new FragmentRecyclerViewDoctor(), null);
+            else
+                replaceWithFragment(fragmentRecyclerViewDoctor, null);
+        } else if (id == R.id.nav_about_us) {
 
-        } else if (id == R.id.nav_slideshow) {
+        }  else if (id == R.id.nav_liked) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_exit) {
             rewriteLogInValueAndBackToLogIn(editor);
             System.gc();
 
@@ -146,5 +172,69 @@ public class MainActivity extends AppCompatActivity
         Intent backToLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(backToLoginIntent);
         finish();
+    }
+    private void showDialog() {
+        new AppRatingDialog.Builder()
+                .setPositiveButtonText("Submit")
+                .setNegativeButtonText("Cancel")
+                .setNeutralButtonText("Later")
+                .setNoteDescriptions(Arrays.asList("Very Bad", "Not good", "Quite ok", "Very Good", "Excellent !!!"))
+                .setDefaultRating(2)
+                .setTitle("Rate this application")
+                .setDescription("Please select some stars and give your feedback")
+                .setDefaultComment("This app is pretty cool !")
+                .setStarColor(R.color.starColor)
+                .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
+                .setTitleTextColor(R.color.colorWhite)
+                .setDescriptionTextColor(R.color.colorWhite)
+                .setHint("Please write your comment here ...")
+                .setHintTextColor(R.color.colorWhite)
+                .setCommentTextColor(R.color.commentTextColor)
+                .setCommentBackgroundColor(R.color.colorPrimaryDark)
+                .setWindowAnimation(R.style.MyDialogFadeAnimation)
+                .create(MainActivity.this)
+                .show();
+    }
+
+    public void replaceWithFragment(Fragment fragment, Handler handler) {
+        // frgmcont has strong reference because we always replace it exactly
+        /*if (fragment.isAdded()) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            for (Fragment addedFragment : getSupportFragmentManager().getFragments()) {
+
+                if (addedFragment != fragment) {
+                    ft.hide(addedFragment);
+                }
+            }
+            ft.show(fragment).commit();
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.frgmCont, fragment)
+                    .addToBackStack(String.valueOf(fragment.getId()))
+                    .show(fragment)
+                    .commit();
+        }*/
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.frgmCont, fragment);
+        ft.commit();
+        if (handler != null) handler.sendEmptyMessage(1);
+
+    }
+
+    @Override
+    public void onPositiveButtonClicked(int i, String s) {
+        Toast.makeText(getApplicationContext(), "rating is : " + i, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNegativeButtonClicked() {
+
+    }
+
+    @Override
+    public void onNeutralButtonClicked() {
+
     }
 }

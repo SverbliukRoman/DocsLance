@@ -47,6 +47,14 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.2.0'
     // picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    // rating library
+    compile 'com.stepstone.apprating:app-rating:2.2.0'
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -14,6 +14,8 @@
     <string name="first_time_here"><a href="https://github.com/SverbliukRoman/DocsLance">First time here?</a></string>
 
     <string name="greetings">Greetings</string>
+    <string name="internet_connection_failed">It seems your internet connection is failed</string>
+    <string name="connection_problems">Connection problems. Make another try later</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
