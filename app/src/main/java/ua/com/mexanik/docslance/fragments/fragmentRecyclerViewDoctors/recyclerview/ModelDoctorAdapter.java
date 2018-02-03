@@ -21,9 +21,10 @@ public class ModelDoctorAdapter extends RecyclerView.Adapter<ModelDoctorViewHold
     private List<ModelDoctor> modelDoctors;
     private Context context;
 
-    public ModelDoctorAdapter(List<ModelDoctor> modelDoctors)
+    public ModelDoctorAdapter(List<ModelDoctor> modelDoctors, Context context)
     {
         this.modelDoctors = modelDoctors;
+        this.context = context;
     }
     @Override
     public ModelDoctorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

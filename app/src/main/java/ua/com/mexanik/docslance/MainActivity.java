@@ -95,7 +95,13 @@ public class MainActivity extends AppCompatActivity
 
         // recyclerview
 
-
+        if (savedInstanceState == null) {
+            if (fragmentRecyclerViewDoctor == null) {
+                fragmentRecyclerViewDoctor = new FragmentRecyclerViewDoctor();
+                replaceWithFragment(fragmentRecyclerViewDoctor, null);
+            } else
+                replaceWithFragment(fragmentRecyclerViewDoctor, null);
+        }
         showDialog();
     }
 
@@ -141,12 +147,12 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_docs) {
             if (fragmentRecyclerViewDoctor == null)
-            replaceWithFragment(new FragmentRecyclerViewDoctor(), null);
+                replaceWithFragment(new FragmentRecyclerViewDoctor(), null);
             else
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
         } else if (id == R.id.nav_about_us) {
 
-        }  else if (id == R.id.nav_liked) {
+        } else if (id == R.id.nav_liked) {
 
         } else if (id == R.id.nav_exit) {
             rewriteLogInValueAndBackToLogIn(editor);
@@ -173,6 +179,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(backToLoginIntent);
         finish();
     }
+
     private void showDialog() {
         new AppRatingDialog.Builder()
                 .setPositiveButtonText("Submit")

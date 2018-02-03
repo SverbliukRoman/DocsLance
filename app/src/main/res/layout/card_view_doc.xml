@@ -54,9 +54,11 @@
         android:layout_height="19dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/text_view_card_view_title"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="112dp"
         android:layout_marginTop="12dp"
         android:maxLines="1"
+        android:text="dslkfjsdkjlhsdkjlfsdlkgjks"
+        android:textColor="@color/greenYellow"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />

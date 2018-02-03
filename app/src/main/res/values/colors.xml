@@ -20,4 +20,5 @@
     <color name="titleTextColor">#D9141627</color>
     <color name="descriptionTextColor">#80141627</color>
     <color name="commentTextColor">#D9141627</color>
+    <color name="greenYellow">#56b100</color>
 </resources>

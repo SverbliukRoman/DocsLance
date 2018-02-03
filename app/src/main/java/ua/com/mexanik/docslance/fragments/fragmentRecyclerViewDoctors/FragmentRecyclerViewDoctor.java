@@ -1,5 +1,7 @@
 package ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -45,11 +47,18 @@ public class FragmentRecyclerViewDoctor extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     private ModelDoctorAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private Activity mActivity;
 
 
 
     public FragmentRecyclerViewDoctor() {
         // Required empty public constructor
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        mActivity = getActivity();
     }
 
 
@@ -73,6 +82,15 @@ public class FragmentRecyclerViewDoctor extends Fragment {
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         getDataFromConnection(); // fill our arraylist
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //filterYear = 0;
+                modelDoctorArrayList.clear();
+                getDataFromConnection();
+            }
+        });
 
         return view;
     }
@@ -111,7 +129,7 @@ public class FragmentRecyclerViewDoctor extends Fragment {
                         public void run() {
 
                             // adapter recreation, for some reason notifyDataSetChanged doesnt work
-                            mAdapter = new ModelDoctorAdapter(modelDoctorArrayList);
+                            mAdapter = new ModelDoctorAdapter(modelDoctorArrayList, mActivity.getApplicationContext());
                             recyclerView.swapAdapter(mAdapter, true);
 
                             /*if (filterYear != 0) {
