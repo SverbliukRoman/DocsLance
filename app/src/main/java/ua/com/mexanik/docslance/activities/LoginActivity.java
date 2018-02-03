@@ -1,4 +1,4 @@
-package ua.com.mexanik.docslance;
+package ua.com.mexanik.docslance.activities;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -50,6 +50,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import ua.com.mexanik.docslance.R;
 
 import static ua.com.mexanik.docslance.Constants.CHECK_IF_IS_AUTH_PASSED;
 import static ua.com.mexanik.docslance.Constants.EXTRAS_PROFILE_FIRST_NAME;
