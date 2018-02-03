@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "493799399127",
+    "firebase_url": "https://docslance.firebaseio.com",
+    "project_id": "docslance",
+    "storage_bucket": "docslance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493799399127:android:c16ba8e8fe42aa04",
+        "android_client_info": {
+          "package_name": "ua.com.mexanik.docslance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493799399127-9atfhh8p9s0m6mu1gugiksfemg61hqn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0hNAPUGJ0RlT44TWad95L37iDAN7whT8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,38 @@
 package ua.com.mexanik.docslance;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static ua.com.mexanik.docslance.Constants.CHECK_IF_IS_AUTH_PASSED;
+import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_FIRST_NAME;
+import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_IMAGE_URL;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    SharedPreferences.Editor editor;
+    SharedPreferences prefs;
+    CircleImageView profileImageView;
+    TextView profileTextName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +40,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +49,29 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        // prefs initialization
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = prefs.edit();
+
+        // get prefs for loading
+        String profileImageUrl = prefs.getString(PREFS_PROFILE_IMAGE_URL, "");
+        Log.d("URL", profileImageUrl);
+        String profileName = prefs.getString(PREFS_PROFILE_FIRST_NAME, "");
+        Log.d("Name", profileName);
+
+        View headerLayout = navigationView.getHeaderView(0);// я ебу нахуй оно, если я мог просто его импортировать же....просто работает и х с ним
+
+        // finding our elements
+        profileImageView = headerLayout.findViewById(R.id.profile_image);
+        profileTextName = headerLayout.findViewById(R.id.profile_name);
+
+        // load image into circleImageView
+        Picasso.with(getApplicationContext())
+                .load(profileImageUrl)
+                .into(profileImageView);
+        profileTextName.setText(getString(R.string.greetings) + ", " + profileName + " " + "!");
     }
 
     @Override
@@ -91,11 +123,28 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            rewriteLogInValueAndBackToLogIn(editor);
+            System.gc();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void rewriteLogInValueAndBackToLogIn(SharedPreferences.Editor editor) {
+        // change value of our variable
+        FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+
+        // trigger switching
+        editor.putBoolean(CHECK_IF_IS_AUTH_PASSED, false);
+        editor.apply();
+
+        // back to LoginActivity
+        Intent backToLoginIntent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(backToLoginIntent);
+        finish();
     }
 }

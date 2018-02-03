@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context="ua.com.mexanik.docslance.LoginActivity">
+
+
+    <Button
+        android:id="@+id/butFacebookStub"
+        android:layout_width="245dp"
+        android:layout_height="45dp"
+        android:layout_above="@+id/txt_credits"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/facebook_skin"
+        android:textColor="@color/colorWhite"
+        android:textSize="13sp" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_login_button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/butFacebookStub"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/txt_credits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/first_time_here"
+        android:textAlignment="center"
+        android:textColorLink="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

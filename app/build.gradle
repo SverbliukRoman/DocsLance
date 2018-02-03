@@ -32,4 +32,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // firebase
+    compile 'com.google.firebase:firebase-auth:11.6.0'
+    //facebook
+    compile 'com.facebook.android:facebook-login:[4,5)'
+    //  google+ login
+    compile 'com.google.android.gms:play-services-auth:11.6.0'
+    // circle image view
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    // picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
+
+apply plugin: 'com.google.gms.google-services'
+
+

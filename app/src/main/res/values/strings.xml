@@ -7,4 +7,12 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="facebook_app_id">170159567043494</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb170159567043494</string>
+
+    <string name="first_time_here"><a href="https://github.com/SverbliukRoman/DocsLance">First time here?</a></string>
+
+    <string name="greetings">Greetings</string>
+
 </resources>
