@@ -34,6 +34,7 @@ import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import ua.com.mexanik.docslance.R;
+import ua.com.mexanik.docslance.fragments.fragments.FragmentProfile;
 import ua.com.mexanik.docslance.fragments.fragments.registratedocfragment.FixturesTabsFragment;
 import ua.com.mexanik.docslance.fragments.fragments.FragmentRecyclerViewDoctor;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     ImageView headerImageView;
     FragmentRecyclerViewDoctor fragmentRecyclerViewDoctor;
     FixturesTabsFragment fixturesTabsFragment;
+    FragmentProfile fragmentProfile;
 
 
     @Override
@@ -161,7 +163,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            // Handle the camera action
+            if (fragmentProfile == null) {
+                replaceWithFragment(new FragmentProfile(), null);
+            } else {
+                replaceWithFragment(fragmentProfile, null);
+            }
         } else if (id == R.id.nav_docs) {
             if (fragmentRecyclerViewDoctor == null) {
                 replaceWithFragment(new FragmentRecyclerViewDoctor(), null);

@@ -51,5 +51,14 @@ public class Constants {
     public static final String DOC_EXP = "experience";
     public static final String DOC_GAS = "gas";
 
+    public static String PROBA_DOCTOR_NAME = "Doctor House";
+    public static String PROBA_DOCTOR_AGE = "21";
+    public static String PROBA_DOCTOR_EDUCATION = "Lviv National Medical University named after Danylo Halytsky";
+    public static String PROBA_DOCTOR_SPECIALIZATION = "Gastroenterology";
+    public static String PROBA_DOCTOR_RATING = "Gastroenterology";
+    public static String PROBA_DOCTOR_PRICE = "350";
+    public static String PROBA_DOCTOR_EXPERIENCE = "350";
+    public static String PROBA_DOCTOR_FOTO = "http://soaptv.ru/wp-content/uploads/2016/06/House-2.jpg";
+    public static String PROBA_DOCTOR_GAS = "300";
 
 }

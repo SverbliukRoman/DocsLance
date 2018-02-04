@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="251dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/colorPrimary" />
+
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/person_image"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    app:civ_border_color="#FFFAFA"
+                    app:civ_border_width="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignStart="@+id/ratingBar"
+                    android:layout_marginTop="39dp"
+                    android:text="Мой рейтинг"
+                    android:textSize="25dp" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginTop="96dp"
+                    android:numStars="5"
+                    android:scaleX=".8"
+                    android:scaleY=".8"
+                    android:stepSize="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/profile_image_card_view"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_card_view_title" />
+
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="250dp"
+                    android:layout_height="43dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="42dp"
+                    android:gravity="center"
+                    android:textColor="#FFFAFA"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/specialization"
+                    android:layout_width="250dp"
+                    android:layout_height="37dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="125dp"
+                    android:gravity="center"
+                    android:textColor="#FFFAFA"
+                    android:textSize="25dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/gas"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/experience"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/education"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="Отзывы:"
+                android:textSize="20dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
