@@ -21,28 +21,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
-import com.stepstone.apprating.AppRatingDialog;
-import com.stepstone.apprating.listener.RatingDialogListener;
-
-import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import ua.com.mexanik.docslance.R;
-import ua.com.mexanik.docslance.fragments.fragments.registratedocfragment.FixturesTabsFragment;
+import ua.com.mexanik.docslance.fragments.fragments.AboutUsFragment;
 import ua.com.mexanik.docslance.fragments.fragments.FragmentRecyclerViewDoctor;
+import ua.com.mexanik.docslance.fragments.fragments.registratedocfragment.FixturesTabsFragment;
 
 import static ua.com.mexanik.docslance.Constants.CHECK_IF_IS_AUTH_PASSED;
 import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_FIRST_NAME;
 import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_IMAGE_URL;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, RatingDialogListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
     SharedPreferences.Editor editor;
     SharedPreferences prefs;
     CircleImageView profileImageView;
@@ -50,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     ImageView headerImageView;
     FragmentRecyclerViewDoctor fragmentRecyclerViewDoctor;
     FixturesTabsFragment fixturesTabsFragment;
+    AboutUsFragment aboutUsFragment;
 
 
     @Override
@@ -119,7 +116,6 @@ public class MainActivity extends AppCompatActivity
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
             }
         }
-        showDialog();
     }
 
     @Override
@@ -169,10 +165,10 @@ public class MainActivity extends AppCompatActivity
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
             }
         } else if (id == R.id.nav_about_us) {
-            if (fixturesTabsFragment == null) {
-                replaceWithFragment(new FixturesTabsFragment(), null);
+            if (aboutUsFragment == null) {
+                replaceWithFragment(new AboutUsFragment(), null);
             } else {
-                replaceWithFragment(fixturesTabsFragment, null);
+                replaceWithFragment(aboutUsFragment, null);
             }
         } else if (id == R.id.nav_liked) {
 
@@ -202,28 +198,7 @@ public class MainActivity extends AppCompatActivity
         finish();
     }
 
-    private void showDialog() {
-        new AppRatingDialog.Builder()
-                .setPositiveButtonText("Submit")
-                .setNegativeButtonText("Cancel")
-                .setNeutralButtonText("Later")
-                .setNoteDescriptions(Arrays.asList("Very Bad", "Not good", "Quite ok", "Very Good", "Excellent !!!"))
-                .setDefaultRating(2)
-                .setTitle("Rate this application")
-                .setDescription("Please select some stars and give your feedback")
-                .setDefaultComment("This app is pretty cool !")
-                .setStarColor(R.color.starColor)
-                .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
-                .setTitleTextColor(R.color.colorWhite)
-                .setDescriptionTextColor(R.color.colorWhite)
-                .setHint("Please write your comment here ...")
-                .setHintTextColor(R.color.colorWhite)
-                .setCommentTextColor(R.color.commentTextColor)
-                .setCommentBackgroundColor(R.color.colorPrimaryDark)
-                .setWindowAnimation(R.style.MyDialogFadeAnimation)
-                .create(MainActivity.this)
-                .show();
-    }
+
 
     public void replaceWithFragment(Fragment fragment, Handler handler) {
         // frgmcont has strong reference because we always replace it exactly
@@ -252,18 +227,5 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onPositiveButtonClicked(int i, String s) {
-        Toast.makeText(getApplicationContext(), "rating is : " + i, Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onNegativeButtonClicked() {
-
-    }
-
-    @Override
-    public void onNeutralButtonClicked() {
-
-    }
 }
