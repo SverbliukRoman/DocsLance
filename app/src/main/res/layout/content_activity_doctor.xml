@@ -15,35 +15,32 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="251dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="175dp"
-                    android:layout_alignParentBottom="true"
+                    android:layout_alignBottom="@+id/specialization"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
                     android:background="@color/colorPrimary" />
 
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/person_image"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="30dp"
                     app:civ_border_color="#FFFAFA"
                     app:civ_border_width="2dp" />
 
                 <RatingBar
-                    android:id="@+id/ratingBar"
+                    android:id="@+id/ratingBarCV"
                     style="?android:attr/ratingBarStyleIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginTop="74dp"
+                    android:layout_alignEnd="@+id/specialization"
+                    android:layout_alignTop="@+id/person_image"
                     android:numStars="5"
                     android:scaleX=".8"
                     android:scaleY=".8"
@@ -53,11 +50,10 @@
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="250dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="41dp"
+                    android:layout_above="@+id/specialization"
+                    android:layout_alignStart="@+id/ratingBarCV"
                     android:gravity="center"
                     android:textColor="#FFFAFA"
                     android:textSize="30dp" />
@@ -66,9 +62,9 @@
                     android:id="@+id/specialization"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/person_image"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="125dp"
+                    android:layout_marginTop="7dp"
                     android:gravity="center"
                     android:textColor="#FFFAFA"
                     android:textSize="25dp" />
@@ -96,8 +92,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:gravity="center"
-                android:text="Отзывы:"
-                android:textSize="20dp" />
+                android:text="Responses :"
+                android:textSize="14sp" />
         </LinearLayout>
+
+
     </ScrollView>
+
+    <Button
+        android:id="@+id/respbutton"
+        android:text="Add a response"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>
