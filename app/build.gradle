@@ -58,10 +58,10 @@ dependencies {
     compile 'in.shadowfax:proswipebutton:1.0.1'
 
 
-
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 
 
 

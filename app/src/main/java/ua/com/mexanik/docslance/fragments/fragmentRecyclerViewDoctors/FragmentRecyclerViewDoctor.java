@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,8 +24,10 @@ import java.util.ArrayList;
 
 import ua.com.mexanik.docslance.Constants;
 import ua.com.mexanik.docslance.R;
+import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.InterfaceDoctor;
 import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctor;
 import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctorAdapter;
+import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctorClickListener;
 import ua.com.mexanik.docslance.helpers.DataGetterFromServer;
 import ua.com.mexanik.docslance.helpers.DataParser;
 
@@ -83,6 +86,8 @@ public class FragmentRecyclerViewDoctor extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         getDataFromConnection(); // fill our arraylist
 
+        addToRVITouchListener(recyclerView, view);
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -129,7 +134,12 @@ public class FragmentRecyclerViewDoctor extends Fragment {
                         public void run() {
 
                             // adapter recreation, for some reason notifyDataSetChanged doesnt work
-                            mAdapter = new ModelDoctorAdapter(modelDoctorArrayList, mActivity.getApplicationContext());
+                            mAdapter = new ModelDoctorAdapter(modelDoctorArrayList, mActivity.getApplicationContext(), new InterfaceDoctor() {
+                                @Override
+                                public void onPositionClicked(int position) {
+
+                                }
+                            });
                             recyclerView.swapAdapter(mAdapter, true);
 
                             /*if (filterYear != 0) {
@@ -150,6 +160,28 @@ public class FragmentRecyclerViewDoctor extends Fragment {
             }
         }, swipeRefreshLayout);
         dataGetterFromServer.start();
+    }
+
+    private void addToRVITouchListener(final RecyclerView recyclerView, View view) // here we add touchListenerToRv
+    {
+        recyclerView.addOnItemTouchListener(new ModelDoctorClickListener(getContext(),
+                new ModelDoctorClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        setToExtras(view, position);
+                    }
+                }));
+    }
+
+    private void setToExtras(View view, int position) // method to set into extras
+    {
+/*        Intent intent = new Intent(view.getContext(), ActivityDoctors.class);
+
+
+        intent.putExtra(EXTRA_NOTIFICATION_DESCRIPTION, notificationsList.get(position).get_description());
+        intent.putExtra(EXTRA_NOTIFICATION_STATUS, notificationsList.get(position).get_status());
+        startActivity(intent);*/
+        Toast toast = Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_LONG);
     }
 
 }

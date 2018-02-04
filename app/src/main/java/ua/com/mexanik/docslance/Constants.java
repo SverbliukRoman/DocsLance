@@ -12,6 +12,15 @@ public class Constants {
     public static final String EXTRAS_PROFILE_FIRST_NAME = "EXTRAS_PROFILE_FIRST_NAME";
     public static final String EXTRAS_PROFILE_IMAGE_URL = "EXTRAS_PROFILE_IMAGE_URL";
 
+    public static final String EXTRAS_ACTIVITY_DOCTORS_NAME = "name";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_AGE = "age";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_EDUCATION = "education";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_RATING = "rating";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_SPECIALIZATION = "specialization";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_PRICE = "Price";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_EXPERIENCE = "experience";
+    public static final String EXTRAS_ACTIVITY_DOCTORS_FOTOURL = "fotoUrl";
+
     public static final String PREFS_PROFILE_FIRST_NAME = "PR_EXTRAS_PROFILE_FIRST_NAME";
     public static final String PREFS_PROFILE_IMAGE_URL = "PR_EXTRAS_PROFILE_IMAGE_URL";
 
