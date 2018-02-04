@@ -1,0 +1,133 @@
+package ua.com.mexanik.docslance.fragments.fragments.registratedocfragment;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import ua.com.mexanik.docslance.R;
+
+public class FixturesTabsFragment extends Fragment {
+
+    /*  private HomeTaskFragment homeTaskFragment;
+      private MaterialsFragment materialsFragment;
+      private TestsFragment testsFragment;*/
+    ChooseARoleFragment chooseARoleFragment;
+    AboutMeInfo aboutMeInfo;
+    ViewPager viewPager;
+
+    int year;
+    int month;
+    int day;
+
+    public FixturesTabsFragment() {
+    }
+
+
+    @SuppressLint("ValidFragment")
+    public FixturesTabsFragment(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_fixtures_tabs, container, false);
+        // Setting ViewPager for each Tabs
+        viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        // Fucking string which fixes all shit with tabs, hate that bitch! It caches 3 pages
+        viewPager.setOffscreenPageLimit(3);
+
+        setupViewPager(viewPager);
+        // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) view.findViewById(R.id.result_tabs);
+        tabs.setupWithViewPager(viewPager);
+        return view;
+
+    }
+
+    public void setDate(Date date) {
+        setupViewPager(viewPager);
+    }
+
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+/*        try {
+            this.date = new Date(this.getArguments().getLong("calendarDate"));
+        } catch (NullPointerException e){
+            this.date = null;
+        }*/
+
+        // fragments creation, only once, so
+        // we will not have to recreate
+/*        if (year != 0) {
+            homeTaskFragment = new HomeTaskFragment(year, month, day);
+            materialsFragment = new MaterialsFragment(year, month, day);
+            testsFragment = new TestsFragment();
+        } else {
+            homeTaskFragment = new HomeTaskFragment();
+            materialsFragment = new MaterialsFragment();
+            testsFragment = new TestsFragment();
+        }
+
+*/
+        chooseARoleFragment = new ChooseARoleFragment();
+        aboutMeInfo = new AboutMeInfo();
+        //creating adapter and fragments to adapter
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(chooseARoleFragment, "");
+        adapter.addFragment(aboutMeInfo, "");
+        //adapter.addFragment(testsFragment, getString(R.string.tests));
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+
+}

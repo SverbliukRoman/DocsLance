@@ -2,6 +2,7 @@ package ua.com.mexanik.docslance.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -33,7 +34,8 @@ import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import ua.com.mexanik.docslance.R;
-import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.FragmentRecyclerViewDoctor;
+import ua.com.mexanik.docslance.fragments.fragments.registratedocfragment.FixturesTabsFragment;
+import ua.com.mexanik.docslance.fragments.fragments.FragmentRecyclerViewDoctor;
 
 import static ua.com.mexanik.docslance.Constants.CHECK_IF_IS_AUTH_PASSED;
 import static ua.com.mexanik.docslance.Constants.PREFS_PROFILE_FIRST_NAME;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     TextView profileTextName;
     ImageView headerImageView;
     FragmentRecyclerViewDoctor fragmentRecyclerViewDoctor;
+    FixturesTabsFragment fixturesTabsFragment;
 
 
     @Override
@@ -63,6 +66,9 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, AddMoreCoinsActivity.class));
             }
         });
+
+        // denied orientation changing
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -109,8 +115,9 @@ public class MainActivity extends AppCompatActivity
             if (fragmentRecyclerViewDoctor == null) {
                 fragmentRecyclerViewDoctor = new FragmentRecyclerViewDoctor();
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
-            } else
+            } else {
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
+            }
         }
         showDialog();
     }
@@ -156,12 +163,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_profile) {
             // Handle the camera action
         } else if (id == R.id.nav_docs) {
-            if (fragmentRecyclerViewDoctor == null)
+            if (fragmentRecyclerViewDoctor == null) {
                 replaceWithFragment(new FragmentRecyclerViewDoctor(), null);
-            else
+            } else {
                 replaceWithFragment(fragmentRecyclerViewDoctor, null);
+            }
         } else if (id == R.id.nav_about_us) {
-
+            if (fixturesTabsFragment == null) {
+                replaceWithFragment(new FixturesTabsFragment(), null);
+            } else {
+                replaceWithFragment(fixturesTabsFragment, null);
+            }
         } else if (id == R.id.nav_liked) {
 
         } else if (id == R.id.nav_exit) {

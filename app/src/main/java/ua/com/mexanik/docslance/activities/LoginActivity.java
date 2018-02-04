@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        loginIntent = new Intent(LoginActivity.this, MainActivity.class);
+        loginIntent = new Intent(LoginActivity.this, RegistrateUserActivity.class);
 
         // make link to soloeast site
         creditsTextView = (findViewById(R.id.txt_credits));
@@ -302,7 +302,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        loginIntent = new Intent(LoginActivity.this, MainActivity.class);
+        loginIntent = new Intent(LoginActivity.this, RegistrateUserActivity.class);
         performLogin(loginIntent, currentUser);
     }
 

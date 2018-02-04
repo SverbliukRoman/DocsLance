@@ -29,7 +29,10 @@ public class Constants {
 
     public static final String URL_TO_PARSE = "http://192.168.12.1/?doc=";
 
+    public static final String URL_TO_POST = "http://192.168.12.1/addClient";
+
     public static final String EXTRA_LOGIN_CODE = "code";
+    public static final String PREFS_LOGIN_STATUS = "code";
 
     public static final String EXTRAS_TITLE = "title";
     public static final String EXTRAS_HASH_MAP = "map";

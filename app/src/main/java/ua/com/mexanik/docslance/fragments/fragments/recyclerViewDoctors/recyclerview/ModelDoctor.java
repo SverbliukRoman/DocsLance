@@ -1,4 +1,4 @@
-package ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview;
+package ua.com.mexanik.docslance.fragments.fragments.recyclerViewDoctors.recyclerview;
 
 import android.graphics.Bitmap;
 

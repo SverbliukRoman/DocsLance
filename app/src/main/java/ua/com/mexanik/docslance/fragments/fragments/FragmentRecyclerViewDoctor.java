@@ -1,4 +1,4 @@
-package ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors;
+package ua.com.mexanik.docslance.fragments.fragments;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import ua.com.mexanik.docslance.Constants;
 import ua.com.mexanik.docslance.R;
 import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.InterfaceDoctor;
-import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctor;
-import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctorAdapter;
 import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.ModelDoctorClickListener;
+import ua.com.mexanik.docslance.fragments.fragments.recyclerViewDoctors.recyclerview.ModelDoctor;
+import ua.com.mexanik.docslance.fragments.fragments.recyclerViewDoctors.recyclerview.ModelDoctorAdapter;
 import ua.com.mexanik.docslance.helpers.DataGetterFromServer;
 import ua.com.mexanik.docslance.helpers.DataParser;
 

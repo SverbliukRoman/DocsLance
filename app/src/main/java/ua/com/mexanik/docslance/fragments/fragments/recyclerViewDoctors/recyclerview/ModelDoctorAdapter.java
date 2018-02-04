@@ -1,4 +1,4 @@
-package ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview;
+package ua.com.mexanik.docslance.fragments.fragments.recyclerViewDoctors.recyclerview;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import java.util.List;
 import ua.com.mexanik.docslance.Constants;
 import ua.com.mexanik.docslance.R;
 import ua.com.mexanik.docslance.activities.ActivityDoctor;
+import ua.com.mexanik.docslance.fragments.fragmentRecyclerViewDoctors.recyclerview.InterfaceDoctor;
 
 /**
  * Created by root on 2/3/18.
