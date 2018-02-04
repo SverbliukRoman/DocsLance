@@ -54,6 +54,10 @@ dependencies {
     compile 'com.stepstone.apprating:app-rating:2.2.0'
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    // magic button
+    compile 'in.shadowfax:proswipebutton:1.0.1'
+
+
 
 }
 

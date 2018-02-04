@@ -15,6 +15,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "493799399127-iu40oc9vgtasdcs69htmp9ume6tp0u5m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ua.com.mexanik.docslance",
+            "certificate_hash": "81f0a0e8efec5ce2c44d488121a07cd5644aedaa"
+          }
+        },
+        {
+          "client_id": "493799399127-ivq4euc4873egao9k8cc8dmntnhkgt5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ua.com.mexanik.docslance",
+            "certificate_hash": "a5c6511228dad4422b6ac7fbf5f64b92cabbe207"
+          }
+        },
+        {
+          "client_id": "493799399127-ndn8hb5cdh01qrpc0r7j47ipmks1p93f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ua.com.mexanik.docslance",
+            "certificate_hash": "02fdb8189f87acade8bb862fb698dc6af79d7918"
+          }
+        },
+        {
+          "client_id": "493799399127-78e7te83mktskbi9kl6m3clsvk4fk5fm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ua.com.mexanik.docslance",
+            "certificate_hash": "57ef0fc9ec58fa9c3821a4536c4a5fe6dfb022b3"
+          }
+        },
+        {
           "client_id": "493799399127-9atfhh8p9s0m6mu1gugiksfemg61hqn6.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +61,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493799399127-9atfhh8p9s0m6mu1gugiksfemg61hqn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
