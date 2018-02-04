@@ -100,7 +100,7 @@ public class ActivityDoctor extends AppCompatActivity implements RatingDialogLis
                 .setDefaultRating(2)
                 .setTitle("Rate this doctor")
                 .setDescription("Please select some stars and give your feedback")
-                .setDefaultComment("")
+                .setDefaultComment("Nice job")
                 .setStarColor(R.color.starColor)
                 .setNoteDescriptionTextColor(R.color.noteDescriptionTextColor)
                 .setTitleTextColor(R.color.colorWhite)
@@ -108,7 +108,7 @@ public class ActivityDoctor extends AppCompatActivity implements RatingDialogLis
                 .setHint("Please write your comment here ...")
                 .setHintTextColor(R.color.colorWhite)
                 .setCommentTextColor(R.color.commentTextColor)
-                .setCommentBackgroundColor(R.color.colorPrimaryDark)
+                .setCommentBackgroundColor(R.color.noteDescriptionTextColor)
                 .setWindowAnimation(R.style.MyDialogFadeAnimation)
                 .create(ActivityDoctor.this)
                 .show();
