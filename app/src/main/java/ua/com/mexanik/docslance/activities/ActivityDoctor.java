@@ -80,8 +80,6 @@ public class ActivityDoctor extends AppCompatActivity implements RatingDialogLis
 
        setStatusBarColor();
 
-
-
     }
 
     private void setStatusBarColor() {
@@ -107,7 +105,7 @@ public class ActivityDoctor extends AppCompatActivity implements RatingDialogLis
                 .setDescriptionTextColor(R.color.colorWhite)
                 .setHint("Please write your comment here ...")
                 .setHintTextColor(R.color.colorWhite)
-                .setCommentTextColor(R.color.commentTextColor)
+                .setCommentTextColor(R.color.colorWhite)
                 .setCommentBackgroundColor(R.color.noteDescriptionTextColor)
                 .setWindowAnimation(R.style.MyDialogFadeAnimation)
                 .create(ActivityDoctor.this)
