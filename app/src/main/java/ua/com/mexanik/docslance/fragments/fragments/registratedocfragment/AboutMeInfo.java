@@ -1,5 +1,6 @@
 package ua.com.mexanik.docslance.fragments.fragments.registratedocfragment;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -16,6 +17,7 @@ import com.spark.submitbutton.SubmitButton;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import ua.com.mexanik.docslance.R;
+import ua.com.mexanik.docslance.activities.MainActivity;
 import ua.com.mexanik.docslance.helpers.DataGetterFromServer;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -86,6 +88,7 @@ public class AboutMeInfo extends Fragment {
                     {
                         DataGetterFromServer.sendPost(getApplicationContext());
                     }
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
